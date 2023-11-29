@@ -2,6 +2,7 @@ version: '3.7'
 # docker-compose -f docker-compose-7.8.yml up -d
 # rabbitmq-plugins enable rabbitmq_management
 services:
+  # 账密 admin/admin
   rabbitmq:
     image: rabbitmq:3.12.9
     container_name: rabbitmq
