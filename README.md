@@ -1,4 +1,9 @@
-# RabbitMQ
+# RabbitMQ 使用教程
+
+作者：小傅哥
+<br/>博客：[https://bugstack.cn](https://bugstack.cn)
+
+> 沉淀、分享、成长，让自己和他人都能有所收获！😄
 
 本文的宗旨在于通过简单干净实践的方式教会读者，使用 Docker 配置 RabbitMQ 在 DDD 结构下验证使用。关于 MQ 的场景内容已经在 [RocketMQ](https://bugstack.cn/md/road-map/rocketmq.html) 一节中做了讲解，本文只要为大家扩展另外一种 MQ 的使用。方便有需要的伙伴可以做技术栈替换。
 
@@ -15,11 +20,11 @@
 本案例涉及了 RabbitMQ 的使用，都已经在工程中提供了安装脚本，可以按需执行。—— 前置条件已安装 [Docker](https://bugstack.cn/md/road-map/docker.html) 环境。
 
 <div align="center">
-    <img src="./docs/images/roadmap-rabbitmq-01.png?raw=true" width="750px">
+    <img src="https://bugstack.cn/images/roadmap/tutorial/roadmap-rabbitmq-01.png?raw=true" width="750px">
 </div>
 
 <div align="center">
-    <img src="./docs/images/roadmap-rabbitmq-02.png?raw=true" width="750px">
+    <img src="https://bugstack.cn/images/roadmap/tutorial/roadmap-rabbitmq-02.png?raw=true" width="750px">
 </div>
 
 - Mac 电脑会比较好安装一些，直接在 IntelliJ IDEA 点击小绿色按钮即可完成安装。安装完成后进入 [http://localhost:9000/#!/2/docker/containers](http://localhost:9000/#!/2/docker/containers) - 可看到 RabbitMQ 运行。
@@ -28,10 +33,10 @@
 
 ## 二、配置主题
 
-登录 RabbitMQ 管理后台：[http://127.0.0.1:15672/#/](http://127.0.0.1:15672/#/) - `账密：admin/admin` 
+登录 RabbitMQ 管理后台：[http://127.0.0.1:15672/#/](http://127.0.0.1:15672/#/) - `账密：admin/admin`
 
 <div align="center">
-    <img src="./docs/images/roadmap-rabbitmq-03.png?raw=true" width="750px">
+    <img src="https://bugstack.cn/images/roadmap/tutorial/roadmap-rabbitmq-03.png?raw=true" width="750px">
 </div>
 
 进入到后台以后，先如图配置个主题消息，后面会使用到这个主题发送和监听消息信息。
@@ -237,13 +242,13 @@ public class ApiTest {
 
 ```java
 22:29:46.792 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  Customer               - 接收消息：基本消息
-22:30:40.525 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  FanoutCustomer         - 接收消息【广播模式】：广播消息
-22:31:27.117 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-1] INFO  RouteCustomer          - 接收消息【路由模式】：路由模式，消息2
-22:31:27.117 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-1] INFO  RouteCustomer          - 接收消息【路由模式】：路由模式，消息1
-10:32:08.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener03：通配符模式，消息2
-10:32:08.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener01：通配符模式，消息1
-10:32:08.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener02：通配符模式，消息1
-10:32:08.372 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener02：通配符模式，消息2
+        22:30:40.525 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] INFO  FanoutCustomer         - 接收消息【广播模式】：广播消息
+        22:31:27.117 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-1] INFO  RouteCustomer          - 接收消息【路由模式】：路由模式，消息2
+        22:31:27.117 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-1] INFO  RouteCustomer          - 接收消息【路由模式】：路由模式，消息1
+        10:32:08.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#6-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener03：通配符模式，消息2
+        10:32:08.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener01：通配符模式，消息1
+        10:32:08.359 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener02：通配符模式，消息1
+        10:32:08.372 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#5-1] INFO  TopicCustomer          - 接收消息【通配符模式】listener02：通配符模式，消息2
 ```
 
 - 以上案例，分别测试；基本消息、广播消息、路由消息、通配符消息。
